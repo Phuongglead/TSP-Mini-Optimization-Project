@@ -21,10 +21,6 @@ def read_input():
     data = {}
     data['N'] = N
     data['time_matrix'] = t
-    # time_windows: depot at index 0, customers 1 to N following
-    # Insert depot time window as needed. If not specified, we can assume a large window for the depot.
-    # The problem states lines i+1 (i=1 to N) are for customers, so we must also define a depot time window.
-    # Assume start time t0=0 and very large end time for depot if not specified. For simplicity, use (0,100000).
     data['time_windows'] = [(0, 100000)] + list(zip(e, l))
     data['service_time'] = [0] + d  # depot has 0 service time
     data['num_vehicles'] = 1
@@ -69,8 +65,8 @@ def main():
     time = "Time"
     routing.AddDimension(
         transit_callback_index,
-        100000,  # large waiting time buffer
-        100000,  # large maximum time
+        1000000, 
+        1000000,  
         False,
         time,
     )
@@ -94,9 +90,6 @@ def main():
     if solution:
         print_solution(data, manager, routing, solution)
     else:
-        # If no solution is found, based on problem definition, we should at least handle it.
-        # However, the problem does not specify what to do in this case.
-        # We can print nothing or a message. Let's print nothing to follow the problem strictly.
         pass
 
 if __name__ == "__main__":
