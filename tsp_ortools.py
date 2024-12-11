@@ -65,8 +65,8 @@ def main():
     time = "Time"
     routing.AddDimension(
         transit_callback_index,
-        1000000, 
-        1000000,  
+        600000, 
+        600000,  
         False,
         time,
     )
