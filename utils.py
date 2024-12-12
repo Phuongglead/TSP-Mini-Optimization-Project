@@ -19,7 +19,7 @@ def read_input(from_file=False, file_path=None):
         N = int(lines[0].strip())
 
         # Read time window and service time for each node
-        time_windows = []
+        time_windows = [(-1, -1, -1)]
         for i in range(1, N + 1):
             e, l, d = map(int, lines[i].strip().split())
             time_windows.append((e, l, d))
