@@ -35,7 +35,7 @@ def read_input(from_file=False, file_path=None):
         N = int(input())
 
         # Read time window and service time for each node
-        time_windows = []
+        time_windows = [(-1, -1, -1)]
         for _ in range(N):
             e, l, d = map(int, input().split())
             time_windows.append((e, l, d))
@@ -85,6 +85,3 @@ def evaluate(solution, time_windows, travel_time):
 
     return True, total_time + travel_time[present_position][0]
     
-
-N, TW, TT = read_input(True, "TestCase\\Subtask_10\\input1.txt")
-print(evaluate([1, 5, 3, 2, 4], TW, TT))
